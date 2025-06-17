@@ -1,0 +1,20 @@
+{
+  "name": "angular-users-app",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/joanmrtnz/angular-users-app#readme",
+  "bugs": {
+    "url": "https://github.com/joanmrtnz/angular-users-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joanmrtnz/angular-users-app.git"
+  },
+  "license": "ISC",
+  "author": "Joan Martinez",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
