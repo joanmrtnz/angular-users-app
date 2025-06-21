@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {HousingService} from '../housing.service';
-import {HousingLocationInfo} from '../housinglocation';
+import {UserService} from '../user.service';
+import {UserInfo} from '../user';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
@@ -9,35 +9,16 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
   imports: [ReactiveFormsModule],
   template: `
     <article>
-      <img
-        class="listing-photo"
-        [src]="housingLocation?.photo"
-        alt="Exterior photo of {{ housingLocation?.name }}"
-        crossorigin
-      />
       <section class="listing-description">
-        <h2 class="listing-heading">{{ housingLocation?.name }}</h2>
-        <p class="listing-location">{{ housingLocation?.city }}, {{ housingLocation?.state }}</p>
+        <h2 class="listing-heading">{{ user?.name }}</h2>
       </section>
       <section class="listing-features">
-        <h2 class="section-heading">About this housing location</h2>
+        <h2 class="section-heading">About this user</h2>
         <ul>
-          <li>Units available: {{ housingLocation?.availableUnits }}</li>
-          <li>Does this location have wifi: {{ housingLocation?.wifi }}</li>
-          <li>Does this location have laundry: {{ housingLocation?.laundry }}</li>
+          <li>Full Name: {{ user?.surname }} {{ user?.surname }}</li>
+          <li>Email:  {{ user?.email }}</li>
+          <li>DNI: {{ user?.id }}</li>
         </ul>
-      </section>
-      <section class="listing-apply">
-        <h2 class="section-heading">Apply now to live here</h2>
-        <form [formGroup]="applyForm" (submit)="submitApplication()">
-          <label for="first-name">First Name</label>
-          <input id="first-name" type="text" formControlName="firstName" />
-          <label for="last-name">Last Name</label>
-          <input id="last-name" type="text" formControlName="lastName" />
-          <label for="email">Email</label>
-          <input id="email" type="email" formControlName="email" />
-          <button type="submit" class="primary">Apply now</button>
-        </form>
       </section>
     </article>
   `,
@@ -45,21 +26,22 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 })
 export class Details {
   route: ActivatedRoute = inject(ActivatedRoute);
-  housingService = inject(HousingService);
-  housingLocation: HousingLocationInfo | undefined;
+  userService = inject(UserService);
+  user: UserInfo | undefined;
 
   constructor() {
-    const housingLocationId = Number(this.route.snapshot.params['id']);
+    const userId = this.route.snapshot.params['id'];
 
-      this.housingService
-    .getHousingLocationById(housingLocationId)
-    .then((housingLocation: HousingLocationInfo | undefined) => {
-      this.housingLocation = housingLocation;
+      this.userService
+    .getUserById(userId)
+    .then((user: UserInfo | undefined) => {
+      this.user = user;
     });
   }
 
   // Form object
   applyForm = new FormGroup({
+    id: new FormControl(''),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     email: new FormControl(''),
@@ -67,7 +49,8 @@ export class Details {
 
   
   submitApplication() {
-    this.housingService.submitApplication(
+    this.userService.submitApplication(
+      this.applyForm.value.id ?? '',
       this.applyForm.value.firstName ?? '',
       this.applyForm.value.lastName ?? '',
       this.applyForm.value.email ?? '',

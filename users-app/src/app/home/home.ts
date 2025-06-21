@@ -1,21 +1,21 @@
 import { Component, inject } from '@angular/core';
-import {HousingLocation} from '../housing-location/housing-location';
-import {HousingLocationInfo} from '../housinglocation';
-import {HousingService} from '../housing.service';
+import {User} from '../user/user';
+import {UserInfo} from '../user';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-home',
-  imports: [HousingLocation],
+  imports: [User],
   template: `
     <section>
       <form>
-        <input type="text" placeholder="Filter by city" #filter />
+        <input type="text" placeholder="Search Users" #filter />
         <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
       </form>
     </section>
     <section class="results">
-      @for(housingLocation of filteredLocationList; track $index) {
-        <app-housing-location [housingLocation]="housingLocation"></app-housing-location>
+      @for(user of filteredUserList; track $index) {
+        <app-user [user]="user"></app-user>
       }
     </section>
   `,
@@ -23,16 +23,16 @@ import {HousingService} from '../housing.service';
 })
 
 export class Home {
-  housingLocationList: HousingLocationInfo[] = [];
-  filteredLocationList: HousingLocationInfo[] = [];
-  housingService: HousingService = inject(HousingService);
+  userList: UserInfo[] = [];
+  filteredUserList: UserInfo[] = [];
+  userService: UserService = inject(UserService);
 
   constructor() {
-    this.housingService
-    .getAllHousingLocations()
-    .then((housingLocationList: HousingLocationInfo[]) => {
-      this.housingLocationList = housingLocationList;
-      this.filteredLocationList = housingLocationList;
+    this.userService
+    .getAllUsers()
+    .then((userList: UserInfo[]) => {
+      this.userList = userList;
+      this.filteredUserList = userList;
     });
     
   }
@@ -41,11 +41,14 @@ export class Home {
 
     // Clean filtered array
     if (!text) {
-      this.filteredLocationList = this.housingLocationList;
+      this.filteredUserList = this.userList;
       return;
     }
-    this.filteredLocationList = this.housingLocationList.filter((housingLocation) =>
-      housingLocation?.city.toLowerCase().includes(text.toLowerCase()),
+    this.filteredUserList = this.userList.filter((user) =>
+      user?.name.toLowerCase().includes(text.toLowerCase()) ||
+      user?.surname.toLowerCase().includes(text.toLowerCase()) ||
+      user?.email.toLowerCase().includes(text.toLowerCase()) ||
+      user?.id.toLowerCase().includes(text.toLowerCase()),
     );
   }
 }
