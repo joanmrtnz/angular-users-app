@@ -7,11 +7,21 @@ import {RouterModule} from '@angular/router';
   imports: [Home, RouterModule],
   template: `
     <main>
+      
+      <header>
       <a [routerLink]="['/']">
-        <header class="brand-name">
           <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true" />
-        </header>
       </a>
+      <nav>
+        <a [routerLink]="['/']">
+          <p>Users List</p>
+        </a>
+        <a [routerLink]="['/new-user']">
+          <p>New User</p>
+        </a>
+        
+      </nav>  
+      </header>
       <section class="content">
         <router-outlet></router-outlet>
       </section>
