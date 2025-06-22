@@ -45,5 +45,8 @@ export class UserForm {
       this.registerForm.value.lastName ?? '',
       this.registerForm.value.email ?? '',
     );
+
+    this.registerForm.reset();
+
   }
 }
