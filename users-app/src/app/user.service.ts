@@ -34,6 +34,7 @@ export class UserService {
       });
 
       if (response.ok) {
+        const result = await response.json();
         alert('Usuario guardado correctamente.');
       } else {
         alert(`Error al guardar: ${response.status} ${response.statusText}`);
