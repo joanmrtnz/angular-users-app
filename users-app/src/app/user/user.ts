@@ -8,9 +8,10 @@ import {RouterLink,RouterOutlet} from '@angular/router';
   imports: [RouterLink, RouterOutlet],
  template: `
     <section class="listing">
-      <h2 class="listing-heading">{{ user().name }}</h2>
-      <p class="listing-location">{{ user().surname }}, {{ user().email }}</p>
+      <div class="listing-user">
+      <p class="listing-data">{{ user().name }} {{ user().surname }} ({{ user().email }})</p>
       <a [routerLink]="['/details', user().id]">Details</a>
+      </div>
     </section>
   `,
   styleUrl: './user.css'
