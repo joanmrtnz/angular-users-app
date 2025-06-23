@@ -1,31 +1,41 @@
 .listing {
   display: flex;
-  background: var(--accent-color);
+  background: white;
   border-radius: 10px;
-  padding: 5px 15px 5px 15px;
+  padding: 5px 15px 0 15px;
 }
 .listing-user {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  border-top: solid 1px var(--text-color);
 }
 .listing-data {
   display: flex;
   align-items: center;
+  color: var(--zinc-400);
 }
 .listing-data::before {
   content: url("/assets/user.svg");
-  margin-right: 1rem;
+  margin-right: 0.5rem;
+}
+.listing-data span{
+ color: var(--text-color);
+ margin-right: 0.5rem;
 }
 .listing-user a {
+  font-size: small;
+  border-radius: 10px;
+  padding: 15px 20px;
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--text-color);
   display: flex;
   align-items: center;
   padding-right: 1rem;
+  background-color:  var(--stone-100);
 }
 .listing-user a::after {
   content: "\203A"; /* flechita › */
-  margin-left: 5px;
+  margin-left: 8px;
 }

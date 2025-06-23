@@ -1,5 +1,30 @@
 .brand-logo {
     height: 2rem;
     padding: 0.5rem;
+    margin-left: 0.5rem;
 
+}
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;  
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: var(--stone-100);
+    padding: 0.5rem 0 0.5rem 0;
+}
+nav {
+    display: flex;
+    justify-content: center;
+     margin: 0 1rem 0 1rem;
+}
+nav a {
+    font-size: medium;
+    margin: 0 1rem 0 1rem;
+    text-decoration: none;
+    color: var(--text-color);
+}
+.content{
+    margin: 1rem;
 }

@@ -9,7 +9,7 @@ import {RouterLink,RouterOutlet} from '@angular/router';
  template: `
     <section class="listing">
       <div class="listing-user">
-      <p class="listing-data">{{ user().name }} {{ user().surname }} ({{ user().email }})</p>
+      <p class="listing-data"><span>{{ user().name }} {{ user().surname }}</span> ({{ user().email }})</p>
       <a [routerLink]="['/details', user().id]">Details</a>
       </div>
     </section>
