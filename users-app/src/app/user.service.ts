@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserInfo } from './user';
+import { PaginatedResponse } from './paginated-response';
+
 
 @Injectable({
   providedIn: 'root',
@@ -7,9 +9,11 @@ import { UserInfo } from './user';
 export class UserService {
   url = 'http://localhost:3000/users';
 
-  async getAllUsers(): Promise<UserInfo[]> {
-    const data = await fetch(this.url);
-    return (await data.json()) ?? [];
+  async getAllUsers(page: number | null): Promise<PaginatedResponse<UserInfo>> {
+    const response = await fetch(`${this.url}?_page=${page}`);
+    const data = await response.json();
+    console.log(data);
+    return (data) ?? [];
   }
 
   async getUserById(id: string): Promise<UserInfo | undefined> {

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {User} from '../user/user';
 import {UserInfo} from '../user';
+import {PaginatedResponse} from '../paginated-response';
 import {UserService} from '../user.service';
 
 @Component({
@@ -21,29 +22,57 @@ import {UserService} from '../user.service';
           <button type="button" (click)="filterResults(filter.value)">Search</button>
         </div>
       </form>
+      <div (click)="orderResults(orderAZ)">
+        <img class="sort-icon" [src]="orderAZ ? '/assets/sort.svg' : '/assets/sort-inverse.svg'" alt="sort" aria-hidden="true" />
+      </div>
     </section>
     <section class="results">
       @for(user of filteredUserList; track $index) {
         <app-user [user]="user"></app-user>
       }
     </section>
+    <footer>
+      <div class="pagination-btns">
+        <button type="button"  [disabled]="prev == null" (click)="getAllUsers(this.prev)">Previous</button>
+        <button type="button"  [disabled]="next == null" (click)="getAllUsers(this.next)">Next</button>
+      </div>
+    </footer>
   `,
   styleUrl: './home.css'
 })
 
 export class Home {
+  orderAZ: boolean = true;
   userList: UserInfo[] = [];
   filteredUserList: UserInfo[] = [];
+  first!: number;
+  prev!: number | null;
+  next!: number | null;
+  last!: number;
+  pages!: number;
+  items!: number;
   userService: UserService = inject(UserService);
 
   constructor() {
-    this.userService
-    .getAllUsers()
-    .then((userList: UserInfo[]) => {
-      this.userList = userList;
-      this.filteredUserList = userList;
-    });
-    
+   this.getAllUsers(1);
+  }
+
+  getAllUsers(page: number | null){
+     this.userService
+    .getAllUsers(page)
+   .then((resp: PaginatedResponse<UserInfo>) => {
+        this.userList = resp.data;
+        this.filteredUserList = resp.data;
+        this.first = resp.first;
+        this.prev  = resp.prev;
+        this.next  = resp.next;
+        this.last  = resp.last;
+        this.pages = resp.pages;
+        this.items = resp.items;
+      })
+      .catch(err => {
+        console.error('Error cargando usuarios:', err);
+      });
   }
 
   filterResults(text: string) {
@@ -59,6 +88,11 @@ export class Home {
       user?.email.toLowerCase().includes(text.toLowerCase()) ||
       user?.id.toLowerCase().includes(text.toLowerCase()),
     );
+  }
+
+  orderResults(orderAZ: boolean){
+    this.filteredUserList = this.filteredUserList.sort((a, b) => orderAZ ? a.name.localeCompare(b.name) :  b.name.localeCompare(a.name));
+    this.orderAZ = !orderAZ;
   }
 }
 
