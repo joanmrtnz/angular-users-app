@@ -10,14 +10,14 @@ import {RouterModule} from '@angular/router';
       
       <header>
       <a [routerLink]="['/']">
-          <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true" />
+          <img class="brand-logo" src="/assets/logo.png" alt="logo" aria-hidden="true" />
       </a>
       <nav>
         <a [routerLink]="['/']">
-          <p>Users List</p>
+          <p>Members</p>
         </a>
         <a [routerLink]="['/new-user']">
-          <p>New User</p>
+          <img class="add-user-btn" src="/assets/add-user.svg" alt="logo" aria-hidden="true" />
         </a>
         
       </nav>  

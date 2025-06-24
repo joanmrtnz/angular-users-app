@@ -1,7 +1,7 @@
 .brand-logo {
-    height: 2rem;
-    padding: 0.5rem;
-    margin-left: 0.5rem;
+    height: 1.5rem;
+    padding: 1rem;
+    margin-left: 1rem;
 
 }
 header {
@@ -12,19 +12,37 @@ header {
     width: 100%;
     justify-content: space-between;
     background-color: var(--stone-100);
-    padding: 0.5rem 0 0.5rem 0;
+    padding-top: 0.5rem;
 }
 nav {
     display: flex;
     justify-content: center;
-     margin: 0 1rem 0 1rem;
+    margin: 0 1rem 0 1rem;
 }
 nav a {
-    font-size: medium;
-    margin: 0 1rem 0 1rem;
+    font-size: small;
+    margin: 0 1rem 0 0.5rem;
     text-decoration: none;
     color: var(--text-color);
 }
+nav a p{
+    padding-top: 0.5rem;
+}
+nav a:hover {
+    text-decoration: underline;
+}
 .content{
     margin: 1rem;
+}
+nav a img {
+  margin-top: 0.5rem;
+  padding: 8px 1.5rem;
+  border: none;
+  background-color: var(--zinc-400);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+nav a img:hover {
+  opacity: 0.8;
 }

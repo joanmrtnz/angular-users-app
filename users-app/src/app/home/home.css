@@ -46,8 +46,8 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.search button:hover{
-  opacity: calc(0.8);
+.search-wrapper button:hover{
+  opacity: 0.8;
 }
 .sort-icon{
   height: 1.5rem;
@@ -81,6 +81,9 @@ input[type="text"] {
   color: white;
   border-radius: 5px;
   cursor: pointer;
+}
+.pagination-btns button:hover {
+  opacity: 0.8;
 }
 .pagination-btns button:disabled {
   background-color: var(--stone-100);

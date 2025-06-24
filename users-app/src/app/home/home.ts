@@ -9,7 +9,7 @@ import {UserService} from '../user.service';
   imports: [User],
   template: `
     <section class="list-heading">
-      <h1>Users List</h1>
+      <h1>Members</h1>
       <form>
         <div class="search-wrapper">
           <svg xmlns="http://www.w3.org/2000/svg"
