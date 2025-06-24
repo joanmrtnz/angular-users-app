@@ -9,8 +9,11 @@ import {RouterLink,RouterOutlet} from '@angular/router';
  template: `
     <section class="listing">
       <div class="listing-user">
-      <p class="listing-data"><span>{{ user().name }} {{ user().surname }}</span> ({{ user().email }})</p>
-      <a [routerLink]="['/details', user().id]">Details</a>
+        <div class="listing-data">
+          <img [src]="user().imageUrl || '/assets/user.svg'" alt="Foto de {{ user().name }}" />
+          <p class="listing-data-text"><span>{{ user().name }} {{ user().surname }}</span> ({{ user().email }})</p>
+        </div>
+        <a [routerLink]="['/details', user().id]">Details</a>
       </div>
     </section>
   `,

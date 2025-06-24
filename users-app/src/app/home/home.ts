@@ -8,35 +8,37 @@ import {UserService} from '../user.service';
   selector: 'app-home',
   imports: [User],
   template: `
-    <section class="list-heading">
-      <h1>Members</h1>
-      <form>
-        <div class="search-wrapper">
-          <svg xmlns="http://www.w3.org/2000/svg"
-              class="search-icon"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          <input type="text" placeholder="Search Users" #filter />
-          <button type="button" (click)="filterResults(filter.value)">Search</button>
+    <section class="content">
+      <section class="list-heading">
+        <h1>Members</h1>
+        <form>
+          <div class="search-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="search-icon"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" placeholder="Search Users" #filter />
+            <button type="button" (click)="filterResults(filter.value)">Search</button>
+          </div>
+        </form>
+        <div (click)="orderResults(orderAZ)">
+          <img class="sort-icon" [src]="orderAZ ? '/assets/sort.svg' : '/assets/sort-inverse.svg'" alt="sort" aria-hidden="true" />
         </div>
-      </form>
-      <div (click)="orderResults(orderAZ)">
-        <img class="sort-icon" [src]="orderAZ ? '/assets/sort.svg' : '/assets/sort-inverse.svg'" alt="sort" aria-hidden="true" />
-      </div>
+      </section>
+      <section class="results">
+        @for(user of filteredUserList; track $index) {
+          <app-user [user]="user"></app-user>
+        }
+      </section>
+      <section>
+        <div class="pagination-btns">
+          <button type="button"  [disabled]="prev == null" (click)="getAllUsers(this.prev)">Previous</button>
+          <button type="button"  [disabled]="next == null" (click)="getAllUsers(this.next)">Next</button>
+        </div>
+      </section>
     </section>
-    <section class="results">
-      @for(user of filteredUserList; track $index) {
-        <app-user [user]="user"></app-user>
-      }
-    </section>
-    <footer>
-      <div class="pagination-btns">
-        <button type="button"  [disabled]="prev == null" (click)="getAllUsers(this.prev)">Previous</button>
-        <button type="button"  [disabled]="next == null" (click)="getAllUsers(this.next)">Next</button>
-      </div>
-    </footer>
   `,
   styleUrl: './home.css'
 })

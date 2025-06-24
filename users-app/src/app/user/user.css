@@ -14,13 +14,20 @@
 .listing-data {
   display: flex;
   align-items: center;
+}
+.listing-data-text {
+  display: flex;
+  align-items: center;
   color: var(--zinc-400);
 }
-.listing-data::before {
-  content: url("/assets/user.svg");
-  margin-right: 0.5rem;
+.listing-data img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover; 
+  border-radius: 10px;
+  margin: 0 0.5rem;
 }
-.listing-data span{
+.listing-data-text span{
  color: var(--text-color);
  margin-right: 0.5rem;
 }
@@ -36,6 +43,6 @@
   background-color:  var(--stone-100);
 }
 .listing-user a::after {
-  content: "\203A"; /* flechita › */
+  content: "\203A";
   margin-left: 8px;
 }

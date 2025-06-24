@@ -2,6 +2,7 @@
     height: 1.5rem;
     padding: 1rem;
     margin-left: 1rem;
+    opacity: 0.8;
 
 }
 header {
@@ -30,9 +31,6 @@ nav a p{
 }
 nav a:hover {
     text-decoration: underline;
-}
-.content{
-    margin: 1rem;
 }
 nav a img {
   margin-top: 0.5rem;
