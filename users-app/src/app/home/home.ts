@@ -23,9 +23,27 @@ import {UserService} from '../user.service';
             <button type="button" (click)="filterResults(filter.value)">Search</button>
           </div>
         </form>
+
+        
+        <div class="export-container" (click)="toggleExportMenu()">
+          <img class="download-icon"
+              src="/assets/download.svg"
+              alt="export"
+              aria-hidden="true" />
+
+          @if (showExportMenu) {
+            <div class="export-menu">
+              <button type="button" (click)="onDownloadCsv()">CSV</button>
+              <button type="button" (click)="onDownloadPdf()">PDF</button>
+            </div>
+          }
+        </div> 
+
+
         <div (click)="orderResults(orderAZ)">
           <img class="sort-icon" [src]="orderAZ ? '/assets/sort.svg' : '/assets/sort-inverse.svg'" alt="sort" aria-hidden="true" />
         </div>
+
       </section>
       <section class="results">
         @for(user of filteredUserList; track $index) {
@@ -54,6 +72,7 @@ export class Home {
   pages!: number;
   items!: number;
   userService: UserService = inject(UserService);
+  showExportMenu : boolean = false;
 
   constructor() {
    this.getAllUsers(1);
@@ -96,5 +115,22 @@ export class Home {
     this.filteredUserList = this.filteredUserList.sort((a, b) => orderAZ ? a.name.localeCompare(b.name) :  b.name.localeCompare(a.name));
     this.orderAZ = !orderAZ;
   }
+
+  onDownloadCsv(){
+    this.userService.exportCsv(this.filteredUserList)
+    console.log("Descargando csv...");
+    this.showExportMenu = false;
+  }
+
+  onDownloadPdf(){
+    this.userService.exportPdf(this.filteredUserList)
+    console.log("Descargando pdf...");
+    this.showExportMenu = false;
+  } 
+
+  toggleExportMenu() {
+    this.showExportMenu = !this.showExportMenu;
+  }
+
 }
 
