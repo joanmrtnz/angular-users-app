@@ -18,7 +18,7 @@ import {RouterLink} from '@angular/router';
               alt="Foto de {{ user?.name }}"
             />
           </div>
-          <div class="details-info">
+          <div>
             <h1 class="listing-heading">
               {{ user?.name }} {{ user?.surname }}
             </h1>

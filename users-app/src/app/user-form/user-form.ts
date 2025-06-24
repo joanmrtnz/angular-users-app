@@ -1,27 +1,39 @@
 import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {UserService} from '../user.service';
+import {RouterLink} from '@angular/router';
+
 
 @Component({
   selector: 'app-user-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   template: `
-  <article>
-    <section class="user-apply">
-      <h2 class="section-heading">Register New User</h2>
-      <form [formGroup]="registerForm" (submit)="submitApplication()">
-        <label for="first-name">First Name</label>
-        <input id="first-name" type="text" formControlName="firstName" />
-        <label for="last-name">Last Name</label>
-        <input id="last-name" type="text" formControlName="lastName" />
-        <label for="email">Email</label>
-        <input id="email" type="email" formControlName="email" />
-        <label for="id">DNI</label>
-        <input id="id" type="text" formControlName="id" />
-        <button type="submit" class="primary">Apply now</button>
-      </form>
-    </section>
-  </article>
+  <section class="content">
+      <div class="form-card">
+        <div class="form-container">
+          <div>
+          <div class="form-titles">
+            <h2 class="form-heading">Add New Member</h2>
+            <p class="form-subheading">Fill in the following fields</p>
+          </div>
+            <form class="form-info" [formGroup]="registerForm" (submit)="submitApplication()">
+              <label for="first-name">First Name</label>
+              <input id="first-name" type="text" formControlName="firstName" />
+              <label for="last-name">Last Name</label>
+              <input id="last-name" type="text" formControlName="lastName" />
+              <label for="email">Email</label>
+              <input id="email" type="email" formControlName="email" />
+              <label for="id">DNI</label>
+              <input id="id" type="text" formControlName="id" />
+              <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            <div>
+              <a [routerLink]="['/']" class="back-btn" >Back</a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
   `
   ,
   styleUrl: './user-form.css'

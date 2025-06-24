@@ -1,23 +1,96 @@
-.user-apply .section-heading {
-  font-size: 18pt;
-  margin-bottom: 15px;
+.content {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background-color: var(--stone-100);
+}
+.form-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  max-width: 800px;
+  width: 100%;
+  min-height: 70vh;
+  padding: 2rem;
+}
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 1rem;
+  height: 100%;
+}
+.form-titles > * {
+  margin: 0;          
+}
+.form-titles {
+  padding-bottom: 2.5rem;        
+}
+.form-heading {
+  padding-bottom: 0.5rem;
+  font-size: 2rem;
+  color: var(--text-color);
+}
+.form-subheading {
+  margin-top: 0;            
+  margin-bottom: 2.5rem;    
+  font-size: small;
+  font-weight: 500;
+  color: var(--zinc-400);
+  opacity: 0.8;
 }
 label, input {
   display: block;
 }
 label {
-  color: var(--secondary-color);
+  color: var(--zinc-400);
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 12pt;
+  font-size: small;
 }
 input {
   font-size: 16pt;
   margin-bottom: 15px;
   padding: 10px;
-  width: 400px;
+  width: 80%;
   border-top: none;
   border-right: none;
   border-left: none;
   border-bottom: solid .3px;
+  color: var(--text-color);      
+  font-size: small;              
+  font-family: 'Roboto', sans-serif;     
+}
+input:focus {
+  outline: none;
+}
+.submit-btn {
+  margin: 1rem 0 1.5rem 0;
+  padding: 8px 1.5rem;
+  border: none;
+  background-color: var(--text-color);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: small;
+}
+.submit-btn:hover {
+  opacity: 0.8;
+}
+.back-btn {
+  margin: 1.5rem 0;
+  padding: 8px 1.5rem;
+  max-width: 1.5rem;
+  border: none;
+  background-color: var(--zinc-400);
+   opacity: 0.6;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: small;
+}
+.back-btn:hover {
+  opacity: 0.5;
 }
