@@ -10,7 +10,7 @@ import {UserService} from '../user.service';
   template: `
     <section class="content">
       <section class="list-heading">
-        <h1>Members</h1>
+        <h1>{{ numUsers }} Members</h1>
         <form>
           <div class="search-wrapper">
             <svg xmlns="http://www.w3.org/2000/svg"
@@ -70,9 +70,9 @@ export class Home {
   next!: number | null;
   last!: number;
   pages!: number;
-  items!: number;
   userService: UserService = inject(UserService);
   showExportMenu : boolean = false;
+  numUsers : number = 0;
 
   constructor() {
    this.getAllUsers(1);
@@ -89,7 +89,7 @@ export class Home {
         this.next  = resp.next;
         this.last  = resp.last;
         this.pages = resp.pages;
-        this.items = resp.items;
+        this.numUsers = resp.items;
       })
       .catch(err => {
         console.error('Error cargando usuarios:', err);

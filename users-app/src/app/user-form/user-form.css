@@ -29,7 +29,7 @@
 .form-heading {
   padding-bottom: 0.5rem;
   font-size: 2rem;
-  color: var(--text-color);
+  color: rgba(0, 0, 0, 0.80);
 }
 .form-subheading {
   margin-top: 0;            

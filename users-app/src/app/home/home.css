@@ -2,7 +2,7 @@
   margin: 1rem
 }
 .list-heading{
-  color: var(--text-color);
+  color: rgba(0, 0, 0, 0.80);;
   position: sticky;
   top: 4rem;
   z-index: 900;
@@ -16,8 +16,10 @@
 }
 .list-heading h1{
   flex: 50%;
-  font-size: 2rem;
-  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0 ;
+  padding-top: 1rem;
 }
 .list-heading form{
   flex: 50%;
