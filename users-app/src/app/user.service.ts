@@ -70,9 +70,10 @@ export class UserService {
     id: string,
     firstName: string,
     lastName: string,
-    email: string
+    email: string,
+    imageUrl: string
   ) {
-    const bodyData = { name: firstName, surname: lastName, email, id };
+    const bodyData = { name: firstName, surname: lastName, email, id , imageUrl};
 
     try {
       const response = await fetch(`${this.url}`, {

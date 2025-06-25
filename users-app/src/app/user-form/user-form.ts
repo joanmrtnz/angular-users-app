@@ -25,6 +25,8 @@ import {RouterLink} from '@angular/router';
               <input id="email" type="email" formControlName="email" />
               <label for="id">DNI</label>
               <input id="id" type="text" formControlName="id" />
+              <label for="id">IMAGE URL (Optional)</label>
+              <input id="imageUrl" type="text" formControlName="imageUrl" />
               <button type="submit" class="submit-btn">Submit</button>
             </form>
             <div>
@@ -47,6 +49,7 @@ export class UserForm {
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     email: new FormControl(''),
+    imageUrl: new FormControl(''),
   });
 
   
@@ -56,6 +59,7 @@ export class UserForm {
       this.registerForm.value.firstName ?? '',
       this.registerForm.value.lastName ?? '',
       this.registerForm.value.email ?? '',
+      this.registerForm.value.imageUrl ?? '',
     );
 
     this.registerForm.reset();
