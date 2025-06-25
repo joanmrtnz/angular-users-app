@@ -7,17 +7,17 @@ const routeConfig: Routes = [
   {
     path: '',
     component: Home,
-    title: 'Home page',
+    title: 'HealthTrack',
   },
   {
     path: 'details/:id',
     component: Details,
-    title: 'Home details',
+    title: 'HealthTrack',
   },
    {
     path: 'new-user',
     component: UserForm,
-    title: 'New User',
+    title: 'HealthTrack',
   },
 ];
 export default routeConfig;
