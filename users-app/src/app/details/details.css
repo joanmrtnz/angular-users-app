@@ -68,17 +68,36 @@
 .back-btn:hover {
   opacity: 0.8;
 }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .details-container {
+    display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 1.5rem;
+  }
+  .details-photo {
+    border-right: none;
+    margin-bottom: 1rem;
   }
   .details-photo img {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
   }
-  .listing-mail {
-    justify-content: center;
+  .details-card {
+    padding: 1rem;
+  }
+  .listing-heading {
+    font-size: 1.8rem;
+  }
+  .listing-mail,
+  .listing-features {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .back-btn {
+    align-self: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 }

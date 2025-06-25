@@ -11,7 +11,14 @@ import {RouterLink,RouterOutlet} from '@angular/router';
       <div class="listing-user">
         <div class="listing-data">
           <img [src]="user().imageUrl || '/assets/user.svg'" alt="Foto de {{ user().name }}" />
-          <p class="listing-data-text"><span>{{ user().name }} {{ user().surname }}</span> ({{ user().email }})</p>
+          <p class="listing-data-text">
+            <span class="user-name">
+              {{ user().name }} {{ user().surname }}
+            </span>
+            <span class="user-email">
+              ({{ user().email }})
+            </span>
+          </p>
         </div>
         <a [routerLink]="['/details', user().id]">Details</a>
       </div>
