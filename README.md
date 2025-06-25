@@ -44,6 +44,30 @@ cd angular-users-app
 > - **frontend**: serveix l’app Angular via Nginx al port 4200
 > - **api**: executa JSON Server amb `db.json` al port 3000
 
+## Execució sense Docker
+
+Si vols executar l’aplicació sense Docker:
+
+1. **Obre una terminal i situa’t dins de la carpeta del frontend**:
+
+   ```bash
+   cd path/to/users-app
+   ```
+2. **Inicia el servidor de desenvolupament d’Angular**:
+
+   ```bash
+   ng serve
+   ```
+3. **En una altra terminal, des de la carpeta arrel del projecte, executa**:
+
+   ```bash
+   json-server --watch db.json
+   ```
+4. **Obre el navegador** i accedeix a:
+
+   - Interfície web:      `http://localhost:4200`
+   - API d’usuaris:       `http://localhost:3000/users`.
+
 ## Model de dades
 
 Les dades de l’aplicació es troben a `db.json` dins l’array `users`. Cada objecte usuari té les propietats següents:

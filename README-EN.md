@@ -45,6 +45,30 @@ cd angular-users-app
 > * **frontend**: serves the Angular app via Nginx on port 4200
 > * **api**: runs JSON Server serving `db.json` on port 3000
 
+## Running without Docker
+
+To run the application without Docker:
+
+1. **Open a terminal and navigate to the frontend folder**:
+
+   ```bash
+   cd path/to/users-app
+   ```
+2. **Start the Angular development server**:
+
+   ```bash
+   ng serve
+   ```
+3. **In another terminal, from the project root, run**:
+
+   ```bash
+   json-server --watch db.json
+   ```
+4. **Open your browser** and access:
+
+   * Frontend UI: `http://localhost:4200`
+   * Users API:    `http://localhost:3000/users`
+
 ### Data Model
 
 The application data is stored in `db.json` under the `users` array. Each user object has the following properties:
