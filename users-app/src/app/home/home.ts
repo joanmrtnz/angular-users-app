@@ -118,13 +118,11 @@ export class Home {
 
   onDownloadCsv(){
     this.userService.exportCsv(this.filteredUserList)
-    console.log("Descargando csv...");
     this.showExportMenu = false;
   }
 
   onDownloadPdf(){
     this.userService.exportPdf(this.filteredUserList)
-    console.log("Descargando pdf...");
     this.showExportMenu = false;
   } 
 

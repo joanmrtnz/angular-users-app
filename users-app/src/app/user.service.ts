@@ -15,7 +15,6 @@ export class UserService {
   async getAllUsers(page: number | null): Promise<PaginatedResponse<UserInfo>> {
     const response = await fetch(`${this.url}?_page=${page}`);
     const data = await response.json();
-    console.log(data);
     return (data) ?? [];
   }
 
