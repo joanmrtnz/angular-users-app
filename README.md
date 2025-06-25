@@ -80,3 +80,11 @@ angular-users-app/
     ├── angular.json      # Configuració d’Angular CLI
     └── src/              # Codi font (components, serveis, estils)
 ```
+
+## TODO
+  
+- Optimitzar i comprimir imatges (servir en WebP o AVIF).  
+- Minificar i uglify CSS/JS per al build de producció.  
+- Revisar i ajustar **Cache-Control** en les respostes HTTP de l’API per optimitzar reutilització.  
+- Afegir proves unitàries i E2E per garantir la qualitat del codi.  
+- Millorar l’accessibilitat (atributs ARIA, navegació per teclat, colors contrastats).  

@@ -81,3 +81,11 @@ angular-users-app/
     ├── angular.json      # Angular CLI configuration
     └── src/              # Application source (components, services, styles)
 ```
+
+## TODO
+
+- Optimize and compress images (serve in WebP or AVIF).  
+- Minify and uglify CSS/JS for the production build.  
+- Review and adjust **Cache-Control** in API HTTP responses to optimize reuse.  
+- Add unit and end-to-end tests to ensure code quality.  
+- Improve accessibility (ARIA attributes, keyboard navigation, high-contrast colors).  
